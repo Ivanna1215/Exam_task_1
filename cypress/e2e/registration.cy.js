@@ -1,23 +1,23 @@
 import { faker } from '@faker-js/faker';
 import user from '../fixtures/user.json';
-import loginPage from '../support/LoginPage'
+import registrationPage from '../support/RegistrationPage'
 
 describe('Registration test suite', () => {
 
   beforeEach(() => {
-    loginPage
+    registrationPage
       .openHomePage()
       .clickCloseBanner()
       .clickDismissButton()
       .clickAccountBtn()
-      .clickLoginBtn()
+      .clickNavBarLoginBtn()
       .clickNewCustomerLink()
-      .verifyUserRegistratationForm();
+      .verifyUserForm('User Registration');
   });
 
   it('Registration with valid data', () => {
-    user.email = faker.internet.email();
-    loginPage
+    // user.email = faker.internet.email();
+    registrationPage
       .fillEmailField(user.email)
       .fillPasswordField(user.password)
       .fillRepeatPasswordField(user.password)
@@ -31,14 +31,14 @@ describe('Registration test suite', () => {
     user.email = faker.internet.email();
     user.passwordFirst = faker.internet.password();
     user.passwordSecond = faker.internet.password();
-    loginPage
+    registrationPage
       .fillEmailField(user.email)
       .fillPasswordField(user.passwordFirst)
       .fillRepeatPasswordField(user.passwordSecond)
       .selectSecurityQuestion(user.question)
       .fillSecurityAnswerField(user.answer)
       .getErrorRegistrMessage().should('contain.text', 'Passwords do not match')
-    loginPage
+    registrationPage
       .getRegisterBtn().should('have.attr', 'disabled');
 
   })

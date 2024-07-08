@@ -1,9 +1,10 @@
 import BasePage from "./BasePage";
 
-class LoginPage extends BasePage {
+class RegistrationPage extends BasePage {
 
     constructor() {
         super();
+        this.newCustomerLink = '#newCustomerLink';
         this.emailField = '#emailControl';
         this.passwordField = '#passwordControl';
         this.repeatPasswordField = '#repeatPasswordControl';
@@ -12,6 +13,10 @@ class LoginPage extends BasePage {
         this.securityQuestion = '[class*="mat-select-arrow-wrapper"]';
         this.successfullyRegistrMessage = '[class="mat-simple-snack-bar-content"]';
         this.errorRegistrMessage = '#mat-error-10';
+    }
+
+    getNewCustomerLink() {
+        return cy.get(this.newCustomerLink)
     }
 
     getEmailField() {
@@ -77,6 +82,12 @@ class LoginPage extends BasePage {
         return this
     }
 
+    clickNewCustomerLink() {
+        cy.log('Click login btn')
+        this.getNewCustomerLink().click()
+        return this
+    }
+
     clickRegistrButton() {
         cy.log("Submit registration form");
         this.getRegisterBtn().click();
@@ -84,6 +95,8 @@ class LoginPage extends BasePage {
     }
 
 
+
+
 }
 
-export default new LoginPage();
+export default new RegistrationPage();

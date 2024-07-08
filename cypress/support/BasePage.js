@@ -4,9 +4,11 @@ export default class BasePage {
         this.closeBanner = '[aria-label="Close Welcome Banner"]';
         this.dismissButton = '[aria-label="dismiss cookie message"]';
         this.accountBtn = '#navbarAccount';
-        this.loginBtn = '#navbarLoginButton';
-        this.newCustomerLink = '#newCustomerLink';
-
+        this.navBarLoginBtn = '#navbarLoginButton';
+        this.email = '#email';
+        this.password = '#password';
+        this.loginBtn = '#loginButton';
+        this.errorMessageText = '[class="error ng-star-inserted"]';
     }
 
     openHomePage() {
@@ -27,12 +29,31 @@ export default class BasePage {
         return cy.get(this.accountBtn);
     }
 
-    getLoginBtn() {
-        return cy.get(this.loginBtn);
+    getNavBarLoginBtn() {
+        return cy.get(this.navBarLoginBtn);
     }
 
-    getNewCustomerLink() {
-        return cy.get(this.newCustomerLink)
+    getEmail() {
+        return cy.get(this.email)
+    }
+
+    getPassword() {
+        return cy.get(this.password)
+    }
+
+    getLoginBtn() {
+        return cy.get(this.loginBtn)
+    }
+
+    getErrormessageText() {
+        return cy.get(this.errorMessageText)
+    }
+
+    fillLoginForm(loginName, password) {
+        cy.log("Fill login form");
+        loginName ? this.getEmail().type(loginName) : cy.log("Keep loginName input field empty");
+        password ? this.getPassword().type(password) : cy.log("Keep password input field empty");
+        return this
     }
 
     clickCloseBanner() {
@@ -53,23 +74,20 @@ export default class BasePage {
         return this
     }
 
+    clickNavBarLoginBtn() {
+        this.getNavBarLoginBtn().click()
+        return this
+    }
+
     clickLoginBtn() {
-        cy.log('Click login btn')
         this.getLoginBtn().click()
         return this
     }
 
-    clickNewCustomerLink() {
-        cy.log('Click login btn')
-        this.getNewCustomerLink().click()
+    verifyUserForm(contain) {
+        cy.contains('h1', contain).should('be.visible')
         return this
     }
-
-verifyUserRegistratationForm(){
-    cy.contains('h1', 'User Registration').should('be.visible')
-    return this
-}
-    
 
 
 }
