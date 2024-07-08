@@ -12,7 +12,7 @@ describe('Registration test suite', () => {
       .clickAccountBtn()
       .clickLoginBtn()
       .clickNewCustomerLink()
-      .verifyUserRegistratationForm()
+      .verifyUserRegistratationForm();
   });
 
   it('Registration with valid data', () => {
@@ -24,8 +24,7 @@ describe('Registration test suite', () => {
       .selectSecurityQuestion(user.question)
       .fillSecurityAnswerField(user.answer)
       .clickRegistrButton()
-      .getSuccessfullyRegistrMessage().should('have.text', 'Registration completed successfully. You can now log in.')
-
+      .getSuccessfullyRegistrMessage().should('have.text', 'Registration completed successfully. You can now log in.');
   })
 
   it('Registration with invalid data', () => {
@@ -39,11 +38,9 @@ describe('Registration test suite', () => {
       .selectSecurityQuestion(user.question)
       .fillSecurityAnswerField(user.answer)
       .getErrorRegistrMessage().should('contain.text', 'Passwords do not match')
-    loginPage.getRegisterBtn().should('have.attr', 'disabled')
-
+    loginPage
+      .getRegisterBtn().should('have.attr', 'disabled');
 
   })
-
-
 
 })
