@@ -83,7 +83,17 @@ class RegistrationPage extends BasePage {
         return this
     }
 
-
+    successfullyRegistration(email, password, repeatPass, question, answer) {
+        this
+            .fillEmailField(email)
+            .fillPasswordField(password)
+            .fillRepeatPasswordField(password)
+            .selectSecurityQuestion(question)
+            .fillSecurityAnswerField(answer)
+            .clickRegistrButton()
+            .getSuccessfullyRegistrMessage().should('have.text', 'Registration completed successfully. You can now log in.');
+        return this
+    }
 
 
 }

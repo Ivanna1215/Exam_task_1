@@ -7,11 +7,7 @@ describe('Registration test suite', () => {
 
   beforeEach(() => {
     registrationPage
-      .openHomePage()
-      .clickCloseBanner()
-      .clickDismissButton()
-      .clickAccountBtn()
-      .clickNavBarLoginBtn()
+      .navigateToLogin()
       .clickNewCustomerLink()
       .verifyUserForm('User Registration');
   });
@@ -19,13 +15,7 @@ describe('Registration test suite', () => {
   it('Registration with valid data', () => {
     user.email = faker.internet.email();
     registrationPage
-      .fillEmailField(user.email)
-      .fillPasswordField(user.password)
-      .fillRepeatPasswordField(user.password)
-      .selectSecurityQuestion(user.question)
-      .fillSecurityAnswerField(user.answer)
-      .clickRegistrButton()
-      .getSuccessfullyRegistrMessage().should('have.text', 'Registration completed successfully. You can now log in.');
+      .successfullyRegistration(user.email, user.password, user.password, user.question, user.answer)
   })
 
   it('Registration with invalid data', () => {

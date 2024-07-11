@@ -1,24 +1,22 @@
+import authorizationPage from '../support/Authorizationpage'
+import registrationPage from '../support/RegistrationPage'
 import { faker } from '@faker-js/faker';
 import user from '../fixtures/user.json';
-import authorizationPage from '../support/Authorizationpage'
-import { successfullyRegistration } from '../support/helper';
+
+
 
 beforeEach(() => {
     authorizationPage
-        .openHomePage()
-        .clickCloseBanner()
-        .clickDismissButton()
-        .clickAccountBtn()
-        .clickNavBarLoginBtn()
+        .navigateToLogin()
 });
 
 describe('Authorization test suite', () => {
 
     it('Successful authorization', () => {
-        authorizationPage.clickNewCustomerLink()
-            .verifyUserForm('User Registration');
         user.email = faker.internet.email();
-        successfullyRegistration(user.email, user.password, user.password, user.question, user.answer)
+        authorizationPage.clickNewCustomerLink()
+            .verifyUserForm('User Registration')
+        registrationPage.successfullyRegistration(user.email, user.password, user.password, user.question, user.answer)
         authorizationPage
             .fillLoginForm(user.email, user.password)
             .clickLoginBtn()

@@ -105,6 +105,23 @@ export default class BasePage {
         return this
     }
 
+    verifyMessage(contains) {
+        this.getSuccessfullyRegistrMessage().should('have.text', contains)
+        return this
+    }
+
+    navigateToLogin() {
+        this
+            .openHomePage()
+            .clickCloseBanner()
+            .clickDismissButton()
+            .clickAccountBtn()
+            .clickNavBarLoginBtn()
+        return this
+    }
+
+
+
 
 
 

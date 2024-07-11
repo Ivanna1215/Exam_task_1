@@ -93,7 +93,6 @@ class OrderPage extends BasePage {
         return cy.get(this.expiryYear)
     }
 
-
     searchProduct(product) {
         this.getSeachProd().type(`${product}{enter}`)
         return this
@@ -115,7 +114,7 @@ class OrderPage extends BasePage {
         return this
     }
 
-    clickContBtn() {
+    clickContinueBtn() {
         cy.contains('Continue').click()
         return this
     }
@@ -130,10 +129,65 @@ class OrderPage extends BasePage {
         return this
     }
 
-    selectDeliverySpeed(index = 0) {
+    selectOption(index = 0) {
         this.getDeliverySpeed().find(".mat-radio-button").eq(index).click()
         return this
     }
+
+    selectBasket() {
+        cy.contains('Your Basket', { timeout: 5000 }).click()
+        return this
+    }
+
+    addAdress(country, name, mobileNumber, zipCode, address, city, state) {
+        cy.contains('Add New Address', { timeout: 5000 }).click()
+        this.verifyUserForm('Add New Address')
+        this.getCountry().type(country);
+        this.getName().type(name);
+        this.getName().type(name);
+        this.getMobileNumber().type(mobileNumber);
+        this.getZipCode().type(zipCode);
+        this.getAddress().type(address);
+        this.getCity().type(city);
+        this.getState().type(state);
+        this.getSubmitBtn().click()
+        return this
+    }
+
+    addCard() {
+        cy.contains(' Add a credit or debit card ').click()
+        return this
+    }
+
+    fillCard(contains, text) {
+        cy.contains('mat-label', contains).then(($el) => {
+            cy.wrap($el).parent().parent().parent().find('input').click().type(text);
+        });
+        return this
+    }
+
+    fillCardExpiryOptions(contains, option) {
+        cy.contains('mat-label', contains).then(($el) => {
+            cy.wrap($el).parent().parent().parent().find('.mat-input-element').select(option)
+        });
+        return this
+    }
+
+    fillCardOptions(optionName, name, optionNumber, cardNumber, optionMonth, month, optionYear, year) {
+        this.fillCard(optionName, name)
+            .fillCard(optionNumber, cardNumber)
+            .fillCardExpiryOptions(optionMonth, month)
+            .fillCardExpiryOptions(optionYear, year)
+        return this
+    }
+
+    placeOrder() {
+        cy.contains('Place your order and pay').click()
+        return this
+    }
+
+
+
 }
 
 export default new OrderPage();
