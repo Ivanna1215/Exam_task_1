@@ -1,6 +1,7 @@
+import registrationPage from '../support/RegistrationPage'
 import { faker } from '@faker-js/faker';
 import user from '../fixtures/user.json';
-import registrationPage from '../support/RegistrationPage'
+
 
 describe('Registration test suite', () => {
 
@@ -16,7 +17,7 @@ describe('Registration test suite', () => {
   });
 
   it('Registration with valid data', () => {
-    // user.email = faker.internet.email();
+    user.email = faker.internet.email();
     registrationPage
       .fillEmailField(user.email)
       .fillPasswordField(user.password)

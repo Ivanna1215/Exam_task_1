@@ -2,5 +2,15 @@
   "email": "ivanna.kovaliv1215@gmail.com",
   "password": 78965411,
   "answer": "Gevjuk'",
-  "question": "Mother's maiden name?"
+  "question": "Mother's maiden name?",
+  "name": "Ivanna Kovaliv",
+  "cardNumber": 1234123412341234,
+  "expiryMonth": 12,
+  "expiryYear": "2024",
+  "country": "Ukraine",
+  "mobileNumber": "0990242246",
+  "zipCode": "12345",
+  "address": "123 Main St",
+  "city": "Kyiv",
+  "state": "Kyiv Region"
 }

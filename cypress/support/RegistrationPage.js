@@ -4,20 +4,18 @@ class RegistrationPage extends BasePage {
 
     constructor() {
         super();
-        this.newCustomerLink = '#newCustomerLink';
+
         this.emailField = '#emailControl';
         this.passwordField = '#passwordControl';
         this.repeatPasswordField = '#repeatPasswordControl';
         this.securityAnswerField = '#securityAnswerControl';
         this.registerButton = '#registerButton';
         this.securityQuestion = '[class*="mat-select-arrow-wrapper"]';
-        this.successfullyRegistrMessage = '[class="mat-simple-snack-bar-content"]';
+
         this.errorRegistrMessage = '#mat-error-10';
     }
 
-    getNewCustomerLink() {
-        return cy.get(this.newCustomerLink)
-    }
+
 
     getEmailField() {
         return cy.get(this.emailField);
@@ -41,10 +39,6 @@ class RegistrationPage extends BasePage {
 
     getSecurityQustion() {
         return cy.get(this.securityQuestion)
-    }
-
-    getSuccessfullyRegistrMessage() {
-        return cy.get(this.successfullyRegistrMessage)
     }
 
     getErrorRegistrMessage() {
@@ -82,11 +76,6 @@ class RegistrationPage extends BasePage {
         return this
     }
 
-    clickNewCustomerLink() {
-        cy.log('Click login btn')
-        this.getNewCustomerLink().click()
-        return this
-    }
 
     clickRegistrButton() {
         cy.log("Submit registration form");

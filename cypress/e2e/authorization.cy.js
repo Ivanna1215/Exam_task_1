@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 import user from '../fixtures/user.json';
 import authorizationPage from '../support/Authorizationpage'
+import { successfullyRegistration } from '../support/helper';
 
 beforeEach(() => {
     authorizationPage
@@ -9,11 +10,15 @@ beforeEach(() => {
         .clickDismissButton()
         .clickAccountBtn()
         .clickNavBarLoginBtn()
-        .verifyUserForm('Login')
 });
 
 describe('Authorization test suite', () => {
+
     it('Successful authorization', () => {
+        authorizationPage.clickNewCustomerLink()
+            .verifyUserForm('User Registration');
+        user.email = faker.internet.email();
+        successfullyRegistration(user.email, user.password, user.password, user.question, user.answer)
         authorizationPage
             .fillLoginForm(user.email, user.password)
             .clickLoginBtn()
@@ -21,6 +26,10 @@ describe('Authorization test suite', () => {
 })
 
 describe('Negative authorization test suite', () => {
+
+    beforeEach(() => {
+        authorizationPage.verifyUserForm('Login')
+    })
 
     afterEach(() => {
         authorizationPage.clickLoginBtn()
@@ -30,6 +39,7 @@ describe('Negative authorization test suite', () => {
     })
 
     it('User cannot login with incorrect email', () => {
+
         user.email = faker.internet.email();
         authorizationPage.fillLoginForm(user.email, user.password)
     })

@@ -5,10 +5,12 @@ export default class BasePage {
         this.dismissButton = '[aria-label="dismiss cookie message"]';
         this.accountBtn = '#navbarAccount';
         this.navBarLoginBtn = '#navbarLoginButton';
+        this.newCustomerLink = '#newCustomerLink';
         this.email = '#email';
         this.password = '#password';
         this.loginBtn = '#loginButton';
         this.errorMessageText = '[class="error ng-star-inserted"]';
+        this.successfullyRegistrMessage = '[class="mat-simple-snack-bar-content"]';
     }
 
     openHomePage() {
@@ -33,6 +35,10 @@ export default class BasePage {
         return cy.get(this.navBarLoginBtn);
     }
 
+    getNewCustomerLink() {
+        return cy.get(this.newCustomerLink)
+    }
+
     getEmail() {
         return cy.get(this.email)
     }
@@ -47,6 +53,10 @@ export default class BasePage {
 
     getErrormessageText() {
         return cy.get(this.errorMessageText)
+    }
+
+    getSuccessfullyRegistrMessage() {
+        return cy.get(this.successfullyRegistrMessage)
     }
 
     fillLoginForm(loginName, password) {
@@ -79,6 +89,12 @@ export default class BasePage {
         return this
     }
 
+    clickNewCustomerLink() {
+        cy.log('Click login btn')
+        this.getNewCustomerLink().click()
+        return this
+    }
+
     clickLoginBtn() {
         this.getLoginBtn().click()
         return this
@@ -88,6 +104,8 @@ export default class BasePage {
         cy.contains('h1', contain).should('be.visible')
         return this
     }
+
+
 
 
 }
