@@ -12,5 +12,6 @@
   "zipCode": "12345",
   "address": "123 Main St",
   "city": "Kyiv",
-  "state": "Kyiv Region"
+  "state": "Kyiv Region",
+  "comment": "I don't like apple juice"
 }

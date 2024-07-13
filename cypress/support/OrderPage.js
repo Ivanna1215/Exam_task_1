@@ -114,11 +114,6 @@ class OrderPage extends BasePage {
         return this
     }
 
-    clickContinueBtn() {
-        cy.contains('Continue').click()
-        return this
-    }
-
     clickSubmitBtn() {
         this.getSubmitBtn().click()
         return this

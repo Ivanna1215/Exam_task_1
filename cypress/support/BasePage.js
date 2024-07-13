@@ -120,6 +120,11 @@ export default class BasePage {
         return this
     }
 
+    clickNameButton(contains) {
+        cy.contains(contains, { timeout: 5000 }).click({ force: true })
+        return this
+    }
+
 
 
 

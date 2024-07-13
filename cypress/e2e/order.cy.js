@@ -30,15 +30,15 @@ describe('Order Process', () => {
             .verifyUserForm('Select an address')
         verifyPageText('have', [user.name, user.address, user.state]);
         orderPage.checkAddress()
-            .clickContinueBtn()
+            .clickNameButton('Continue')
             .selectOption()
-            .clickContinueBtn()
+            .clickNameButton('Continue')
             .addCard()
             .fillCardOptions('Name', user.name, 'Card Number', user.cardNumber, 'Expiry Month', 11, 'Expiry Year', '2080')
             .clickSubmitBtn()
             .verifyMessage('Your card ending with 1234 has been saved for your convenience.')
             .selectOption()
-            .clickContinueBtn()
+            .clickNameButton('Continue')
             .placeOrder()
         verifyPageText('have', ['Thank you for your purchase!', 'Your order will be delivered in 1 days.']);
 
