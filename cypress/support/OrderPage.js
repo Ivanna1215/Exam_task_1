@@ -4,8 +4,6 @@ class OrderPage extends BasePage {
 
     constructor() {
         super();
-        this.searchProd = '[class*="mat-search_icon-search"]';
-        this.btn_basket = '[class*= "btn-basket"]';
         this.basket = '[aria-label="Show the shopping cart"]';
         this.checkoutBtn = '#checkoutButton';
         this.country = '[data-placeholder="Please provide a country."]';
@@ -22,15 +20,6 @@ class OrderPage extends BasePage {
         this.cardPaymentOptions = '#mat-input-2';
         this.expiryMonth = '#mat-input-3';
         this.expiryYear = '#mat-input-4';
-
-    }
-
-    getSeachProd() {
-        return cy.get(this.searchProd)
-    }
-
-    getBtnBasket() {
-        return cy.get(this.btn_basket)
     }
 
     getCheckBtn() {
@@ -93,19 +82,8 @@ class OrderPage extends BasePage {
         return cy.get(this.expiryYear)
     }
 
-    searchProduct(product) {
-        this.getSeachProd().type(`${product}{enter}`)
-        return this
-    }
-
     clearProd() {
         this.getSeachProd().clear()
-        return this
-    }
-
-
-    clickAddProdToBasket() {
-        this.getBtnBasket().click()
         return this
     }
 
@@ -137,8 +115,7 @@ class OrderPage extends BasePage {
     addAdress(country, name, mobileNumber, zipCode, address, city, state) {
         cy.contains('Add New Address', { timeout: 5000 }).click()
         this.verifyUserForm('Add New Address')
-        this.getCountry().type(country);
-        this.getName().type(name);
+        this.getCountry().type(country); А
         this.getName().type(name);
         this.getMobileNumber().type(mobileNumber);
         this.getZipCode().type(zipCode);
@@ -180,7 +157,6 @@ class OrderPage extends BasePage {
         cy.contains('Place your order and pay').click()
         return this
     }
-
 
 
 }

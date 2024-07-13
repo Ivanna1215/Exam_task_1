@@ -3,7 +3,7 @@ import registrationPage from '../support/RegistrationPage'
 import { faker } from '@faker-js/faker';
 import user from '../fixtures/user.json';
 
-import { verifyPageText } from '../support/helper';
+import { addProductIntoBasket, verifyPageText } from '../support/helper';
 
 
 beforeEach(() => {
@@ -20,8 +20,7 @@ beforeEach(() => {
 describe('Order Process', () => {
 
     it('Complete the order process', () => {
-        orderPage.searchProduct('Apple Juice')
-        orderPage.clickAddProdToBasket()
+        addProductIntoBasket('Apple Juice')
         orderPage.selectBasket()
         orderPage.clickCheckout()
         orderPage.addAdress(user.country, user.name, user.mobileNumber, user.zipCode, user.address, user.city, user.state)

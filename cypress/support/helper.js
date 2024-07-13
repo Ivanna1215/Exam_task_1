@@ -1,4 +1,8 @@
-
+export function addProductIntoBasket(product) {
+    cy.get('[class*="mat-search_icon-search"]').type(`${product}{enter}`)
+    cy.get('[class*= "btn-basket"]').click()
+    return this
+}
 
 export function verifyElementContainsText(element, text) {
     cy.contains(element, text).should('be.visible');
@@ -23,8 +27,6 @@ export function verifyPageText(action, textArray) {
     }
     return this;
 }
-
-
 
 
 
