@@ -66,17 +66,13 @@ class FeedbackPage extends BasePage {
     }
 
     setRating(rating) {
-
         this.getRating().then($slider => {
             const width = $slider.width();
             const offset = width * (rating - 1) / 4;
-            cy.wrap($slider).click(offset, 10);  // Клік на відповідній позиції
+            cy.wrap($slider).click(offset, 10);
         });
         return this;
     }
-
-
-
 
 }
 

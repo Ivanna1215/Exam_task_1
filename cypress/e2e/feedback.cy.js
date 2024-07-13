@@ -5,26 +5,19 @@ import user from '../fixtures/user.json';
 
 beforeEach(() => {
     user.email = faker.internet.email();
-    feddbackPage
-        .navigateToLogin()
-        .clickNewCustomerLink()
-        .verifyUserForm('User Registration')
+    feddbackPage.navigateToLogin()
+    feddbackPage.clickNewCustomerLink()
+    feddbackPage.verifyUserForm('User Registration')
     registrationPage.successfullyRegistration(user.email, user.password, user.password, user.question, user.answer)
-        .fillLoginForm(user.email, user.password)
-        .clickLoginBtn();
+    feddbackPage.fillLoginForm(user.email, user.password)
+    feddbackPage.clickLoginBtn();
 });
 
-describe('', () => {
-
-    it('Leave customer feedback', () => {
-        feddbackPage
-            .clickOpenNav()
-            .clickCustomerFeedback()
-            .setRating(3)
-            .fillCustomerFeedback(user.name, user.comment)
-            .clickNameButton('Submit')
-            .verifyMessage('Thank you for your feedback.')
-
-
-    })
+it('Leave customer feedback', () => {
+    feddbackPage.clickOpenNav()
+    feddbackPage.clickCustomerFeedback()
+    feddbackPage.setRating(3)
+    feddbackPage.fillCustomerFeedback(user.name, user.comment)
+    feddbackPage.clickNameButton('Submit')
+    feddbackPage.verifyMessage('Thank you for your feedback.');
 })
