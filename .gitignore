@@ -128,3 +128,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+package-lock.json
+db.json
+db-1720961641471.json
+db-1720962979584.json
