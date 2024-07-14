@@ -16,47 +16,57 @@ export default class BasePage {
     openHomePage() {
         cy.log("Open home page");
         cy.visit('/');
-        return this
+        return this;
     }
 
-    getClosebanner() {
+    getCloseBanner() {
+        cy.log("Get close banner element");
         return cy.get(this.closeBanner);
     }
 
     getDismissButton() {
-        return cy.get(this.dismissButton)
+        cy.log("Get dismiss button element");
+        return cy.get(this.dismissButton);
     }
 
     getAccountBtn() {
+        cy.log("Get account button element");
         return cy.get(this.accountBtn);
     }
 
     getNavBarLoginBtn() {
+        cy.log("Get navbar login button element");
         return cy.get(this.navBarLoginBtn);
     }
 
     getNewCustomerLink() {
-        return cy.get(this.newCustomerLink)
+        cy.log("Get new customer link element");
+        return cy.get(this.newCustomerLink);
     }
 
     getEmail() {
-        return cy.get(this.email)
+        cy.log("Get email input element");
+        return cy.get(this.email);
     }
 
     getPassword() {
-        return cy.get(this.password)
+        cy.log("Get password input element");
+        return cy.get(this.password);
     }
 
     getLoginBtn() {
-        return cy.get(this.loginBtn)
+        cy.log("Get login button element");
+        return cy.get(this.loginBtn);
     }
 
-    getErrormessageText() {
-        return cy.get(this.errorMessageText)
+    getErrorMessageText() {
+        cy.log("Get error message text element");
+        return cy.get(this.errorMessageText);
     }
 
     getSuccessfullyRegistrMessage() {
-        return cy.get(this.successfullyRegistrMessage)
+        cy.log("Get successfully registration message element");
+        return cy.get(this.successfullyRegistrMessage);
     }
 
     fillLoginForm(loginName, password) {
@@ -67,67 +77,67 @@ export default class BasePage {
     }
 
     clickCloseBanner() {
-        cy.log('Close banner about more information and documentation on the project')
-        this.getClosebanner().click();
-        return this
+        cy.log('Close banner about more information and documentation on the project');
+        this.getCloseBanner().click();
+        return this;
     }
 
     clickDismissButton() {
-        cy.log('Close cookie message')
-        this.getDismissButton().click()
-        return this
+        cy.log('Close cookie message');
+        this.getDismissButton().click();
+        return this;
     }
 
     clickAccountBtn() {
-        cy.log('Click account btn')
-        this.getAccountBtn().click()
-        return this
+        cy.log('Click account button');
+        this.getAccountBtn().click();
+        return this;
     }
 
     clickNavBarLoginBtn() {
-        this.getNavBarLoginBtn().click()
-        return this
+        cy.log('Click navbar login button');
+        this.getNavBarLoginBtn().click();
+        return this;
     }
 
     clickNewCustomerLink() {
-        cy.log('Click login btn')
-        this.getNewCustomerLink().click()
-        return this
+        cy.log('Click new customer link');
+        this.getNewCustomerLink().click();
+        return this;
     }
 
     clickLoginBtn() {
-        this.getLoginBtn().click()
-        return this
+        cy.log('Click login button');
+        this.getLoginBtn().click();
+        return this;
     }
 
     verifyUserForm(contain) {
-        cy.contains('h1', contain).should('be.visible')
-        return this
+        cy.log(`Verify user form contains text: ${contain}`);
+        cy.contains('h1', contain).should('be.visible');
+        return this;
     }
 
     verifyMessage(contains) {
-        this.getSuccessfullyRegistrMessage().should('have.text', contains)
-        return this
+        cy.log(`Verify message contains text: ${contains}`);
+        this.getSuccessfullyRegistrMessage().should('have.text', contains);
+        return this;
     }
 
     navigateToLogin() {
+        cy.log('Navigate to login');
         this
             .openHomePage()
             .clickCloseBanner()
             .clickDismissButton()
             .clickAccountBtn()
-            .clickNavBarLoginBtn()
-        return this
+            .clickNavBarLoginBtn();
+        return this;
     }
 
     clickNameButton(contains) {
-        cy.contains(contains, { timeout: 5000 }).click({ force: true })
-        return this
+        cy.log(`Click button with name: ${contains}`);
+        cy.contains(contains, { timeout: 5000 }).click({ force: true });
+        return this;
     }
-
-
-
-
-
-
 }

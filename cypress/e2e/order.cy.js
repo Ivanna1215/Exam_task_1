@@ -23,7 +23,7 @@ describe('Order Process', () => {
         addProductIntoBasket('Apple Juice')
         orderPage.selectBasket()
         orderPage.clickCheckout()
-        orderPage.addAdress(user.country, user.name, user.mobileNumber, user.zipCode, user.address, user.city, user.state)
+        orderPage.addAddress(user.country, user.name, user.mobileNumber, user.zipCode, user.address, user.city, user.state)
         orderPage.verifyUserForm('Select an address')
         verifyPageText('have', [user.name, user.address, user.state]);
         orderPage.checkAddress()

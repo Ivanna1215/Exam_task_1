@@ -11,61 +11,68 @@ class FeedbackPage extends BasePage {
         this.commentField = '#comment';
         this.captcha = '#captcha';
         this.captchaControl = '#captchaControl';
-
     }
 
     getOpenNav() {
-        return cy.get(this.openNav)
+        cy.log("Get open navigation button");
+        return cy.get(this.openNav);
     }
 
     getOpenFeedback() {
-        return cy.get(this.openFeedback)
+        cy.log("Get open feedback button");
+        return cy.get(this.openFeedback);
     }
 
     getAuthorField() {
-        return cy.get(this.authorField)
+        cy.log("Get author field");
+        return cy.get(this.authorField);
     }
 
     getCommentField() {
-        return cy.get(this.commentField)
+        cy.log("Get comment field");
+        return cy.get(this.commentField);
     }
 
     getCaptcha() {
-        return cy.get(this.captcha)
+        cy.log("Get captcha field");
+        return cy.get(this.captcha);
     }
 
     getCaptchaControl() {
-        return cy.get(this.captchaControl)
+        cy.log("Get captcha control field");
+        return cy.get(this.captchaControl);
     }
 
     getRating() {
-        return cy.get(this.rating)
+        cy.log("Get rating slider");
+        return cy.get(this.rating);
     }
 
     clickOpenNav() {
-        this.getOpenNav().click()
-        return this
+        cy.log("Click open navigation button");
+        this.getOpenNav().click();
+        return this;
     }
 
     clickCustomerFeedback() {
-        this.getOpenFeedback().click()
-        return this
+        cy.log("Click customer feedback button");
+        this.getOpenFeedback().click();
+        return this;
     }
 
     fillCustomerFeedback(author, comment) {
-        this.getAuthorField().type(author, { force: true })
-        this.getCommentField().type(comment, { force: true })
-        let result;
+        cy.log("Fill customer feedback form");
+        this.getAuthorField().type(author, { force: true });
+        this.getCommentField().type(comment, { force: true });
         this.getCaptcha().invoke('text').then((text) => {
             const result = eval(text);
             this.getCaptchaControl().type(result.toString(), { force: true });
         });
-
-
-        return this
+        return this;
     }
 
     setRating(rating) {
+        cy.log(`Set rating to ${rating}`);
         this.getRating().then($slider => {
             const width = $slider.width();
             const offset = width * (rating - 1) / 4;
@@ -73,7 +80,6 @@ class FeedbackPage extends BasePage {
         });
         return this;
     }
-
 }
 
 export default new FeedbackPage();

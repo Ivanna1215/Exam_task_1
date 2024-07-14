@@ -28,9 +28,7 @@ describe('Negative authorization test suite', () => {
 
     afterEach(() => {
         authorizationPage.clickLoginBtn()
-
-        cy.log('Verify error message')
-        authorizationPage.getErrormessageText().should('contain.text', 'Invalid email or password.');
+        authorizationPage.getErrorMessageText().should('contain.text', 'Invalid email or password.');
     })
 
     it('User cannot login with incorrect email', () => {

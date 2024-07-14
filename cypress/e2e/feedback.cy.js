@@ -16,6 +16,7 @@ beforeEach(() => {
 it('Leave customer feedback', () => {
     feddbackPage.clickOpenNav()
     feddbackPage.clickCustomerFeedback()
+    feddbackPage.verifyUserForm('Customer Feedback')
     feddbackPage.setRating(3)
     feddbackPage.fillCustomerFeedback(user.name, user.comment)
     feddbackPage.clickNameButton('Submit')
